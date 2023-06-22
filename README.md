@@ -1,4 +1,4 @@
-# The Kratky Method (How To Growing Plants The Easy Way)
+# The Kratky Method (How To Grow Plants The Easy Way)
 
 Use these resources for growing plants using the Kratky hydroponic technique.
 
