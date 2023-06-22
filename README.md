@@ -3,7 +3,7 @@
 Use these resources for growing plants using the Kratky hydroponic technique.
 
 ### Set Up Instructions
-Materials Needed:
+#### Materials Needed:
 
 - Seeds of the plant you wish to grow
 - Rockwool cubes
@@ -17,7 +17,7 @@ Materials Needed:
 - Grow lights (optional, depending on your indoor light conditions)
 - Seedling tray or propagation dome (optional, for initial germination)
 
-### Steps:
+#### Steps:
 
 - Soak your rockwool cubes in water with a pH level around 5.5-6.5 for about an hour.
 - Place your soaked rockwool cubes in a seedling tray or propagation dome if available. If not, any shallow container will work.
