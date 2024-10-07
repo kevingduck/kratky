@@ -124,3 +124,109 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 - Inspired by the Kratky hydroponic method for quick and efficient plant growth.
 - Thanks to the community for supporting open-source projects and sharing knowledge.
+
+
+---
+
+# Kratky Manager App
+
+The Kratky Manager App is a web-based tool designed to help you efficiently manage your hydroponic farm using the Kratky method. This app provides features for managing bins, plants, and tracking growth status, allowing you to stay organized and keep your hydroponic farm running smoothly.
+
+## Key Features
+- **Manage Bins and Plants**: Create and manage bins where you grow your plants. Assign plants to bins, monitor available space, and track growth progress.
+- **Bulk Plant Management**: Add plants in bulk, specify quantities, and ensure that bins are not overfilled.
+- **Plant Status Tracking**: Track the status of your plants (e.g., growing, at risk, harvested) and edit details for individual or multiple plants at once.
+- **Detailed Plant Information**: View detailed information about each plant, such as planting date, expected harvest date, and current status.
+- **Intuitive User Interface**: Easy-to-use interface that provides a dashboard overview of all your bins and plants, including visual indicators for growth status.
+
+## Running the Kratky Manager App
+
+### Prerequisites
+- Python 3.12 or higher
+- Virtual environment setup (recommended)
+- Git
+
+### Set Up Instructions
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/kevingduck/kratky.git
+   cd kratky
+   ```
+
+2. **Create a virtual environment**:
+   ```sh
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
+
+3. **Install dependencies**:
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+4. **Set up the database**:
+   ```sh
+   flask db init
+   flask db migrate -m "Initial migration."
+   flask db upgrade
+   ```
+
+5. **Run the application**:
+   ```sh
+   flask run
+   ```
+
+6. **Access the app**:
+   Open your browser and go to [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
+
+### Development Tips
+- To make changes to the app, edit the Python files and HTML templates as needed.
+- To update the database schema, make changes to the models and run:
+  ```sh
+  flask db migrate -m "Your migration message"
+  flask db upgrade
+  ```
+- Use `flask shell` to interact with the database directly.
+
+---
+
+# The Kratky Method (How To Grow Plants The Easy Way)
+
+Use these resources for growing plants using the Kratky hydroponic technique.
+
+## Set Up Instructions
+### Materials Needed:
+
+- Seeds of the plant you wish to grow
+- Rockwool cubes
+- Vermiculite
+- Non-transparent container (large enough to hold your plant's root system, e.g., plastic tubs or mason jars)
+- Hydroponic nutrients
+- Water
+- pH test kit
+- pH Up/Down solution
+- Seedling heat mat (optional, depending on plant type and your local climate)
+- Grow lights (optional, depending on your indoor light conditions)
+- Seedling tray or propagation dome (optional, for initial germination)
+
+### Steps:
+
+1. Soak your rockwool cubes in water with a pH level around 5.5-6.5 for about an hour.
+2. Place your soaked rockwool cubes in a seedling tray or propagation dome if available. If not, any shallow container will work.
+3. Place your seeds into the holes in the rockwool cubes. Some seeds may require more than one seed per cube.
+4. Cover the seeds with a small amount of vermiculite. This helps retain moisture and blocks light from reaching the seed.
+5. If using a seedling heat mat, place your seedling tray on it and maintain the temperature suitable for your specific type of plant seed.
+6. Keep the rockwool cubes moist but not oversaturated, usually, a daily light watering is enough until seeds germinate.
+7. Once the seeds have sprouted and developed a couple of sets of true leaves, they're ready to be moved to the non-transparent container.
+8. Fill the non-transparent container with water until it’s just touching the bottom of the rockwool cube. The water level should not be so high that the rockwool cube is submerged.
+9. Add the hydroponic nutrients to the water following the manufacturer's instructions for the proper concentration.
+10. Test the pH of your nutrient solution. Most plants prefer a pH range between 5.5 and 6.5 for hydroponic systems. Adjust the pH if necessary using your pH Up/Down solution.
+11. Place the rockwool cubes with your seedlings into the non-transparent container, ensuring that the roots are in the nutrient solution but the rockwool cube is not submerged.
+12. Place the container in a location with a sufficient light source. If sunlight is not available or sufficient, set up your grow lights.
+13. As the plant grows, the roots will reach down into the nutrient solution. The water level will also drop, leaving an air gap for the roots to access oxygen.
+14. Monitor the plant growth, ensuring the roots are moist and the plants are healthy. If the water level gets too low (less than a quarter of the original volume), add more nutrient solution, ensuring you maintain the air gap.
+15. Harvest the plant when it reaches the desired size. For continuous growing, start new seeds in rockwool cubes when your current plant is nearing readiness for harvest.
+
+The Kratky method is a **passive** hydroponic system, and one of its key aspects is **not to refill** the nutrient solution to the top after the plant has started growing. This is because the plant requires an air gap to breathe, which is created naturally as the plant consumes the nutrient solution.
+
+![image](https://github.com/kevingduck/kratky/assets/2180038/d05c0a8e-90ca-439f-8900-2d85fbd9bfbb)
