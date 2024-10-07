@@ -1,0 +1,18 @@
+# List of top 15 garden plants with estimated harvest days and amounts (lbs)
+TOP_PLANTS = [
+    {"name": "Basil", "days_to_harvest": 30, "expected_harvest_amount": 0.5},
+    {"name": "Lettuce", "days_to_harvest": 20, "expected_harvest_amount": 0.3},
+    {"name": "Spinach", "days_to_harvest": 25, "expected_harvest_amount": 0.4},
+    {"name": "Kale", "days_to_harvest": 30, "expected_harvest_amount": 0.5},
+    {"name": "Cilantro", "days_to_harvest": 20, "expected_harvest_amount": 0.3},
+    {"name": "Arugula", "days_to_harvest": 20, "expected_harvest_amount": 0.3},
+    {"name": "Mint", "days_to_harvest": 30, "expected_harvest_amount": 0.5},
+    {"name": "Chives", "days_to_harvest": 30, "expected_harvest_amount": 0.2},
+    {"name": "Parsley", "days_to_harvest": 40, "expected_harvest_amount": 0.4},
+    {"name": "Thyme", "days_to_harvest": 40, "expected_harvest_amount": 0.2},
+    {"name": "Oregano", "days_to_harvest": 40, "expected_harvest_amount": 0.3},
+    {"name": "Pepper", "days_to_harvest": 60, "expected_harvest_amount": 0.8},
+    {"name": "Tomato", "days_to_harvest": 60, "expected_harvest_amount": 1.0},
+    {"name": "Cucumber", "days_to_harvest": 50, "expected_harvest_amount": 0.7},
+    {"name": "Strawberry", "days_to_harvest": 45, "expected_harvest_amount": 0.5}
+]

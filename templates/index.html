@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-4">Dashboard</h1>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-header">Total Bins</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ total_bins }}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-header">Total Plants</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ total_plants }}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-header">Available Plant Spaces</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ available_spaces }}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="mt-4">Upcoming Harvests</h2>
+<ul class="list-group">
+    {% for plant in upcoming_harvests %}
+    <li class="list-group-item">
+        {% if plant.bin %}
+            <a href="{{ url_for('plant_detail', plant_id=plant.id) }}">{{ plant.name }}</a> in
+            <a href="{{ url_for('bin_detail', bin_id=plant.bin.id) }}">{{ plant.bin.name }}</a>
+            - Expected Harvest Date: {{ plant.expected_harvest_date.strftime('%Y-%m-%d') }}
+        {% else %}
+            <span>{{ plant.name }} (No associated bin)</span>
+        {% endif %}
+    </li>
+    {% else %}
+    <li class="list-group-item">No upcoming harvests.</li>
+    {% endfor %}
+</ul>
+
+<h2 class="mt-4">Overdue Harvests</h2>
+<ul class="list-group">
+    {% for plant in overdue_harvests %}
+    <li class="list-group-item">
+        {% if plant.bin %}
+            <a href="{{ url_for('plant_detail', plant_id=plant.id) }}">{{ plant.name }}</a> in
+            <a href="{{ url_for('bin_detail', bin_id=plant.bin.id) }}">{{ plant.bin.name }}</a>
+            - Expected Harvest Date was: {{ plant.expected_harvest_date.strftime('%Y-%m-%d') }}
+        {% else %}
+            <span>{{ plant.name }} (No associated bin)</span>
+        {% endif %}
+    </li>
+    {% else %}
+    <li class="list-group-item">No overdue harvests.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

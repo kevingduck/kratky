@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-4">Bins</h1>
+<a href="{{ url_for('new_bin') }}" class="btn btn-primary mb-3">Add New Bin</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Gallons</th>
+            <th>Plant Spaces</th>
+            <th>Visuals</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bin in bins %}
+        <tr>
+            <td>{{ bin.name }}</td>
+            <td>{{ bin.gallons }}</td>
+            <td>{{ bin.plant_spaces }}</td>
+            <td>
+                <!-- Display the visual status of plants in the bin -->
+                {% for plant in bin.plants %}
+                    {% if plant.status == 'Growing' %}
+                        🌱
+                    {% elif plant.status == 'Ready to harvest' %}
+                        🌿
+                    {% elif plant.expected_harvest_date < now %}
+                        🥀
+                    {% else %}
+                        🌱
+                    {% endif %}
+                {% endfor %}
+                <!-- Fill empty spots with placeholders -->
+                {% for _ in range(bin.plant_spaces - bin.plants|length) %}
+                    ⬜
+                {% endfor %}
+            </td>
+            <td>
+                <a href="{{ url_for('bin_detail', bin_id=bin.id) }}" class="btn btn-info">View</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

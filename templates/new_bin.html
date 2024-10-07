@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-4">Add New Bin</h1>
+<form method="POST" action="{{ url_for('new_bin') }}">
+    <div class="mb-3">
+        <label for="name" class="form-label">Bin Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="gallons" class="form-label">Number of Gallons</label>
+        <input type="number" class="form-control" id="gallons" name="gallons" required>
+    </div>
+    <div class="mb-3">
+        <label for="plant_spaces" class="form-label">Number of Plant Spaces</label>
+        <input type="number" class="form-control" id="plant_spaces" name="plant_spaces" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Bin</button>
+</form>
+{% endblock %}
