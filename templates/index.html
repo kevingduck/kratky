@@ -61,4 +61,22 @@
     <li class="list-group-item">No overdue harvests.</li>
     {% endfor %}
 </ul>
+
+<h2 class="mt-4">Activity Logs</h2>
+<a href="{{ url_for('add_log') }}" class="btn btn-primary mb-3">Add Log</a>
+<ul class="list-group">
+    {% for log in logs %}
+    <li class="list-group-item">
+        <strong>{{ log.timestamp.strftime('%Y-%m-%d') }}:</strong> {{ log.description }}
+        <br>
+        <small>Bins: 
+            {% for bin_name in log.get_bin_names() %}
+                {{ bin_name }}{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </small>
+    </li>
+    {% else %}
+    <li class="list-group-item">No logs available.</li>
+    {% endfor %}
+</ul>
 {% endblock %}

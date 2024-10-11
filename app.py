@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
-from models import db, Bin, Plant
+from models import db, Bin, Plant, Log
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
@@ -34,18 +34,18 @@ TOP_PLANTS = [
 @app.route('/')
 def index():
     bins = Bin.query.all()
-    plants = Plant.query.all()
+    logs = Log.query.order_by(Log.timestamp.desc()).all()
     total_bins = len(bins)
-    total_plants = len(plants)
+    total_plants = sum(len(bin.plants) for bin in bins)
     available_spaces = sum(bin.plant_spaces - len(bin.plants) for bin in bins)
-    today = datetime.today().date()
-    upcoming_harvests = Plant.query.filter(Plant.expected_harvest_date >= today).order_by(Plant.expected_harvest_date).limit(5).all()
-    overdue_harvests = Plant.query.filter(Plant.expected_harvest_date < today, Plant.status != 'Harvested').all()
-    return render_template('index.html', total_bins=total_bins,
-                           total_plants=total_plants,
-                           available_spaces=available_spaces,
-                           upcoming_harvests=upcoming_harvests,
-                           overdue_harvests=overdue_harvests)
+    now = datetime.now().date()
+    upcoming_harvests = Plant.query.filter(Plant.expected_harvest_date >= now).order_by(Plant.expected_harvest_date).limit(5).all()
+    overdue_harvests = Plant.query.filter(Plant.expected_harvest_date < now, Plant.status != 'Harvested').all()
+
+    return render_template('index.html', total_bins=total_bins, total_plants=total_plants,
+                           available_spaces=available_spaces, upcoming_harvests=upcoming_harvests,
+                           overdue_harvests=overdue_harvests, logs=logs)
+
 
 # Bins Routes
 @app.route('/bins')
@@ -150,6 +150,24 @@ def delete_plant(plant_id):
     db.session.delete(plant)
     db.session.commit()
     return redirect(url_for('bin_detail', bin_id=bin_id))
+
+@app.route('/logs/new', methods=['GET', 'POST'])
+def add_log():
+    bins = Bin.query.all()
+    if request.method == 'POST':
+        description = request.form['description']
+        timestamp = datetime.strptime(request.form['timestamp'], '%Y-%m-%d')
+        bin_ids = request.form.getlist('bin_ids')
+        bin_ids_str = ','.join(bin_ids)
+
+        new_log = Log(description=description, timestamp=timestamp, bin_ids=bin_ids_str)
+        db.session.add(new_log)
+        db.session.commit()
+
+        return redirect(url_for('index'))
+
+    return render_template('add_log.html', bins=bins)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
